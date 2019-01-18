@@ -13,6 +13,9 @@
       <li class="nav-item">
         <a class="nav-link" href="./usuario.php">Usuarios</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="./descuento.php">Descuento</a>
+      </li>
     </ul>
     <div class="my-2 my-lg-0">
       <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#formSesion">Iniciar sesión / Registro</button>
