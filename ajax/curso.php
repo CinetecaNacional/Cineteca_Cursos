@@ -67,6 +67,53 @@ switch ($_GET["op"]) {
     //Codificar el resultado utilizando JSON
     echo json_encode($response);
     break;
+  case 'listar_vista':
+    $response = $curso -> listar_online_disponibles();
+    $html='';
+    while ($registro = $response->fetch_object()){
+      if($registro->promocion_disponible){
+        $precio = '<p><b>Precio de promoción:</b> '.number_format($registro->precio_promocion,2,".",",").'MXN vigente hasta el <b>'.strftime("%d de %B de %Y", strtotime($registro->vigencia_promocion)).'</b></p>';
+      }else{
+        $precio = '<p>Precio del curso '.number_format($registro->precio,2,".",",").'MXN.</p>';
+      }
+      $html.='
+      <article class="col-sm-6 col-md-5 col-lg-3 m-md-2 my-2 card">
+        <div class="card-body">
+          <h5 class="card-title">'.$registro->nombre.'</h5>
+          <h6 class="card-subtitle mb-2 text-muted">'.$registro->tipo_curso.'</h6>
+          <p class="card-text">
+            '.$precio.'
+          </p>
+          <button type="button" class="btn btn-primary" onclick="inscribir('.$registro->curso_id.')">Registrarme</button>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#curso'.$registro->curso_id.'">Más información</button>
+        </div>
+      </article>
+      <!-- Modal -->
+      <div class="modal fade" id="curso'.$registro->curso_id.'" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">'.$registro->nombre.'</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body text-justify">
+              <p class="h3 text-secondary">'.$registro->nombre.'</p>
+              <p class="text-dark">'.preg_replace('/\r?\n|\r/','<br/>',$registro->descripcion).'</p>
+              <p class="text-dark">'.$precio.'</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              <button type="button" class="btn btn-primary" onclick="inscribir('.$registro->curso_id.')">Registrarme</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      ';
+    }
+    echo $html;
+    break;
   case 'listar':
     $response = $curso -> listar();
     //Se declara un array

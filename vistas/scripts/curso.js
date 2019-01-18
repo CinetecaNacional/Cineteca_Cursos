@@ -109,8 +109,8 @@ function mostrar(curso_id){
 function guardaryeditar(e)
 {
 	e.preventDefault(); //No se activará la acción predeterminada del evento
+  var formData = new FormData($("#formulario")[0]);
 	$("#btnGuardar").prop("disabled",true);
-	var formData = new FormData($("#formulario")[0]);
 	$.ajax({
 		url: "../ajax/curso.php?op=guardaryeditar",
 	    type: "POST",
@@ -150,8 +150,7 @@ function desactivar_promocion(curso_id)
   }
 }
 //Función para activar registros
-function activar(curso_id)
-{
+function activar(curso_id){
 	var result =confirm("¿Está seguro de poner al público el curso?");
 		if(result==true){
         	$.post("../ajax/curso.php?op=activar", {curso_id : curso_id}, function(e){

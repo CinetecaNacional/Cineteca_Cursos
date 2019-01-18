@@ -22,6 +22,8 @@ require '../inc/navbar.php';
           <th scope="col">Correo electrónico</th>
           <th scope="col">Teléfono</th>
           <th scope="col">Dirección</th>
+          <th scope="col"></th>
+          <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
@@ -31,6 +33,9 @@ require '../inc/navbar.php';
   <article id="frm_registros" class="col-md-7 col-12 mt-2 text-left"> <!--id=formularioregistros-->
     <form name="formulario" id="formulario">
       <p class="h2 text-info text-center m-1"> Formulario de usuarios</p>
+      <div class="form-group">
+        <input type="text" name="usuario_id" class="form-control" id="input_usuario_id" autocomplete="off" hidden>
+      </div>
       <div class="row">
         <div class="col">
           <div class="form-group">
@@ -39,6 +44,7 @@ require '../inc/navbar.php';
             <option value="Presencial">Presencial</option>
             <option value="Online">Online</option>
             <option value="Maestria">Maestría</option>
+            <option value="Administrador principal">Administrador principal</option>
             <option value="Administrador linea">Administrador en línea</option>
             <option value="Administrador presencial">Administrador en presencial</option>
             <option value="Administrador finanzas">Administrador finanzas</option>
@@ -46,29 +52,43 @@ require '../inc/navbar.php';
           </div>
         </div>
         <div class="col">
-        <label for="name">Matrícula:</label>
-        <input type="text" name="matricula" class="form-control" id="input_matricula" placeholder="Ingrese una matrícula" autocomplete="off" minlength="9" maxlength="9" aria-describedby="matriculaHelp">
-        <small id="matriculaHelp" class="form-text text-info">Ingrese una matrícula solo si el usuario ya cuenta con una</small>
+          <label for="name">Matrícula:</label>
+          <input type="text" name="matricula" class="form-control" id="input_matricula" placeholder="Ingrese una matrícula" autocomplete="off" minlength="9" maxlength="9" aria-describedby="matriculaHelp">
+          <small id="matriculaHelp" class="form-text text-info">Ingrese una matrícula solo si el usuario ya cuenta con una</small>
         </div>
       </div>
+      <div class="row" id="passwords">
+        <div class="col">
+          <div class="form-group">
+            <label for="name">Contraseña<b class="text-danger">(*)</b>:</label>
+            <input type="password" name="password" class="form-control" id="input_password" placeholder="Ingrese su contraseña" autocomplete="off">
+          </div>
+        </div>
+        <div class="col">
+          <div class="form-group">
+            <label for="name">Confirmar contraseña<b class="text-danger">(*)</b>:</label>
+            <input type="password" name="password_confirm" class="form-control" id="input_password_comfirm" placeholder="Ingrese su contraseña" autocomplete="off">
+          </div>
+        </div>
+        </div>
       <p class="h3"> Datos generales</p>
       <div class="row">
         <div class="col">
           <div class="form-group">
             <label for="name">Apellido paterno<b class="text-danger">(*)</b>:</label>
-            <input type="text" name="apellido_paterno" class="form-control" id="input_apellido_paterno" placeholder="Ingrese su apellido paterno" required autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);">
+            <input type="text" name="apellido_paterno" class="form-control" id="input_apellido_paterno" placeholder="Ingrese su apellido paterno" autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="name">Apellido materno<b class="text-danger">(*)</b>:</label>
-            <input type="text" name="apellido_materno" class="form-control" id="input_apellido_materno" placeholder="Ingrese su apellido materno" required autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);" >
+            <input type="text" name="apellido_materno" class="form-control" id="input_apellido_materno" placeholder="Ingrese su apellido materno" autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);" >
           </div>
         </div>
       </div>
       <div class="form-group">
         <label for="name">Nombre(s)<b class="text-danger">(*)</b>:</label>
-        <input type="text" name="nombre" class="form-control" id="input_nombre" placeholder="Ingrese su(s) nombre(s)" required autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);" >
+        <input type="text" name="nombre" class="form-control" id="input_nombre" placeholder="Ingrese su(s) nombre(s)" autocomplete="off" minlength="2" maxlength="50" required pattern="[A-Za-záéíóúÁÉÍÓÚ ]+" title="Ingrese solo letras" oninput="upperCase(this);" >
       </div>
       <div class="form-group">
         <label for="name">CURP<b class="text-danger">(*)</b>:</label>
@@ -78,13 +98,13 @@ require '../inc/navbar.php';
         <div class="col">
           <div class="form-group">
             <label for="name">Sexo:</label>
-            <input type="text" name="sexo" class="form-control" id="input_sexo" required disabled>
+            <input type="text" name="sexo" class="form-control" id="input_sexo" required>
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="name">Fecha de nacimiento:</label>
-            <input type="date" name="fecha_nacimiento" class="form-control" id="input_fecha_nacimiento" required disabled>
+            <input type="date" name="fecha_nacimiento" class="form-control" id="input_fecha_nacimiento" required>
           </div>
         </div>
       </div>
@@ -126,13 +146,13 @@ require '../inc/navbar.php';
         <div class="col">
           <div class="form-group">
             <label for="name">Municipio:</label>
-            <input type="text" name="municipio" class="form-control" id="input_municipio" autocomplete="off" disabled>
+            <input type="text" name="municipio" class="form-control" id="input_municipio" autocomplete="off">
           </div>
         </div>
         <div class="col">
           <div class="form-group">
             <label for="name">Estado:</label>
-            <input type="text" name="estado" class="form-control" id="input_estado" autocomplete="off" disabled>
+            <input type="text" name="estado" class="form-control" id="input_estado" autocomplete="off">
           </div>
         </div>
         <div class="col">
@@ -153,24 +173,11 @@ require '../inc/navbar.php';
         <label for="name">Teléfono:</label>
         <input type="tel" name="telefono" class="form-control" id="input_telefono" placeholder="Ingrese un número de contacto" autocomplete="off">
       </div>
-      <div class="row">
-        <div class="col">
-          <div class="form-group">
-            <label for="name">Contraseña<b class="text-danger">(*)</b>:</label>
-            <input type="password" name="password" class="form-control" id="input_password" placeholder="Ingrese su contraseña" required autocomplete="off">
-          </div>
-        </div>
-        <div class="col">
-          <div class="form-group">
-            <label for="name">Confirmar contraseña<b class="text-danger">(*)</b>:</label>
-            <input type="password" name="password_confirm" class="form-control" id="input_password_comfirm" placeholder="Ingrese su contraseña" required autocomplete="off">
-          </div>
-        </div>
-        </div>
       <button type="submit" class="btn btn-primary">Guardar</button>
       <button class="btn btn-danger" onclick="cancelarform()" type="button">Cancelar</button>
     </form>
   </article>
 </section>
 <?php require '../inc/footer.php';?>
+<script src="./scripts/validarCurp.js" charset="utf-8"></script>
 <script src="./scripts/usuario.js" charset="utf-8"></script>

@@ -74,8 +74,9 @@ CREATE TABLE `cursos_usuarios` (
   `cursos_usuarios_id` int(11) NOT NULL,
   `curso_id` int(11) NOT NULL,
   `usuario_id` int(11) NOT NULL,
-  `descuento_id` int(11) NOT NULL,
+  `descuento` varchar(50) NOT NULL,
   `referencia` varchar(45) NOT NULL,
+  `vigencia_curso` date NOT NULL,
   `precio` decimal(10,2) NOT NULL,
   `fecha_limite_pago` date NOT NULL,
   `password` text,
@@ -83,7 +84,11 @@ CREATE TABLE `cursos_usuarios` (
   `experiencia` varchar(45) DEFAULT NULL,
   `link_curso` varchar(100) DEFAULT NULL,
   `pago` tinyint(4) DEFAULT NULL,
-  `comprobante_pago` varchar(50) DEFAULT NULL
+  `comprobante_pago` varchar(50) DEFAULT NULL,
+  `nombre_factura` varchar(100) DEFAULT NULL,
+  `razon_social` varchar(50) DEFAULT NULL,
+  `rfc` varchar(13) DEFAULT NULL,
+  `direccion` varchar(200) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -195,8 +200,7 @@ ALTER TABLE `cursos`
 ALTER TABLE `cursos_usuarios`
   ADD PRIMARY KEY (`cursos_usuarios_id`),
   ADD KEY `cursos_usuarios_ibfk_1` (`curso_id`),
-  ADD KEY `cursos_usuarios_ibfk_2` (`usuario_id`),
-  ADD KEY `cursos_usuarios_ibfk_3` (`descuento_id`);
+  ADD KEY `cursos_usuarios_ibfk_2` (`usuario_id`);
 
 --
 -- Indices de la tabla `descuentos`

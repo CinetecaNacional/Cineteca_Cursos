@@ -13,5 +13,6 @@ define('DB_ENCODE','utf8');
 define('PRO_NAME', 'Cineteca Nacional MEXICO');
 
 define('DATE_TIMEZONE','America/Mexico_City');
+
 define('IDIOMA','spanish');
 ?>
