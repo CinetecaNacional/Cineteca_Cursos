@@ -31,5 +31,10 @@ if(!function_exists('ejecutarConsulta')){
     $str = mysqli_real_escape_string($conexion, trim($str));
     return htmlspecialchars($str);
   }
+  function contarRegistros($sql){
+    global $conexion;
+    $query = $conexion -> query($sql);
+    return $query->num_rows;
+  }
 }
 ?>

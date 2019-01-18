@@ -4,15 +4,15 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <!--<li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      <li class="nav-item active">
+        <a class="nav-link" href="./">Inicio</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
+        <a class="nav-link" href="./curso.php">Cursos</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>-->
+        <a class="nav-link" href="./usuario.php">Usuarios</a>
+      </li>
     </ul>
     <div class="my-2 my-lg-0">
       <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#formSesion">Iniciar sesión / Registro</button>
@@ -47,7 +47,7 @@
             </form>
             <form class="form_singUp" id="frmRegistro" name="frmRegistro" method="post">
             <p class="h3"> Datos generales</p>
-            <div class="row">
+            <!--<div class="row">
               <div class="col">
                 <div class="form-group">
                   <label for="name">Apellido paterno<b class="text-danger">(*)</b>:</label>
@@ -164,7 +164,7 @@
                   <input type="password" name="password_confirm" class="form-control" id="input_password_comfirm" placeholder="Ingrese su contraseña" required autocomplete="off">
                 </div>
               </div>
-              </div>
+            </div>-->
               <div class="alert alert-danger" role="alert" id="mensaje" hidden></div>
               <div class="modal-footer">
                 <button type="submit" class="btn btn-success">Aceptar</button>

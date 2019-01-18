@@ -4,6 +4,7 @@ require_once '../config/global.php';
 $curso = new Curso();
 //Se establece la region para obtener la fecha y hora de la CdMx
 ini_set('date.timezone', DATE_TIMEZONE);
+setlocale(LC_TIME, IDIOMA);
 /*Campo que se esperan obtener de los formularios*/
 
 $curso_id = isset($_POST["curso_id"])? limpiarCadena($_POST["curso_id"]):"";
@@ -116,7 +117,7 @@ switch ($_GET["op"]) {
         "5" => $btn_disponible,
         "6" => $registro->tipo_curso,
         "7" => $registro->precio_promocion ? "$ ".number_format($registro->precio_promocion,2,".",",") ." MXN":" ",
-        "8" => $registro->vigencia_promocion,
+        "8" => !empty($registro->vigencia_promocion) ?strftime("%d de %B de %Y", strtotime($registro->vigencia_promocion)):"",
         "9" => $btn_promocion_disponible,
         "10" => '<button class="btn btn-primary" onclick="mostrar('.$registro->curso_id.')">Editar</button>'
       );
