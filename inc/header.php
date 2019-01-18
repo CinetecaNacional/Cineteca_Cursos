@@ -13,6 +13,9 @@
     <!-- Bootstrap CSS by LOCAL-->
     <link rel="stylesheet" href="../public/css/bootstrap.min.css">
 
+    <!-- DataTables CSS by LOCAL-->
+    <link rel="stylesheet" type="text/css" href="../public/DataTables/datatables.min.css"/>
+    
     <title>Cineteca Nacional MEXICO</title>
   </head>
   <body class="container-fluid">

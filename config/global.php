@@ -11,4 +11,6 @@ define('DB_PASSWORD','');
 define('DB_ENCODE','utf8');
 //Definimos una constante como nombre del proyecto
 define('PRO_NAME', 'Cineteca Nacional MEXICO');
+
+define('DATE_TIMEZONE','America/Mexico_City');
 ?>

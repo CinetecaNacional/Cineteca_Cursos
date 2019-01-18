@@ -30,13 +30,13 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `cursos` (
   `curso_id` int(11) NOT NULL,
-  `nombre` varchar(45) NOT NULL,
+  `nombre` varchar(60) NOT NULL,
   `disponible` tinyint(4) NOT NULL,
   `descripcion` longtext,
   `imagen` varchar(50) DEFAULT NULL,
-  `precio` decimal(8,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
   `tipo_curso` varchar(45) NOT NULL,
-  `precio_promocion` decimal(8,2) DEFAULT NULL,
+  `precio_promocion` decimal(10,2) DEFAULT NULL,
   `vigencia_promocion` date DEFAULT NULL,
   `promocion_disponible` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -76,7 +76,7 @@ CREATE TABLE `cursos_usuarios` (
   `usuario_id` int(11) NOT NULL,
   `descuento_id` int(11) NOT NULL,
   `referencia` varchar(45) NOT NULL,
-  `precio` decimal(8,2) NOT NULL,
+  `precio` decimal(10,2) NOT NULL,
   `fecha_limite_pago` date NOT NULL,
   `password` text,
   `estatus` tinyint(4) DEFAULT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE `cursos_usuarios` (
 CREATE TABLE `descuentos` (
   `descuento_id` int(11) NOT NULL,
   `nombre` varchar(45) NOT NULL,
-  `porcentaje` decimal(8,2) NOT NULL,
+  `porcentaje` decimal(10,2) NOT NULL,
   `disponible` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
